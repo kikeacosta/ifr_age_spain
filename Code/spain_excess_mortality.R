@@ -16,7 +16,7 @@ db_excess <- read_csv("Output/spain_baseline_mortality.csv")
 date1 <- "2020-02-24"
 
 # Date in which seroprevalence information was collected, 
-# between April XX and May XX. Week 18 is the closest middle point 
+# between April 27 and May 11. Week 18 (ending in May 4) is the closest middle point 
 cut_week <- 18
   
   
@@ -38,19 +38,31 @@ md1 <- smooth.spline(x = ages, y = days)
 delays <- tibble(Age = seq(-2.5, 97.5, 0.5), dly_days = predict(md1, x = seq(0, 100, 0.5))$y) %>% 
   mutate(dly_weeks = round(dly_days / 7))
 
-# # Observing fit results
-# delays %>% 
-#   mutate(Age = Age + 2.5,
-#          source = "spline") %>%
-#   bind_rows(tibble(Age = ages, dly_days = days, source = "ECDC")) %>% 
-#   ggplot()+
-#   geom_point(aes(Age, dly_days, col = source))+
-#   scale_x_continuous(breaks = seq(0, 100, 10))
-# 
-# delays %>%
-#   ggplot()+
-#   geom_point(aes(Age, dly_weeks))+
-#   scale_x_continuous(breaks = seq(0, 100, 10))
+# Observing fit results
+delays %>%
+  mutate(Age = Age + 2.5,
+         source = "spline") %>%
+  bind_rows(tibble(Age = ages, dly_days = days, source = "ECDC")) %>%
+  ggplot()+
+  geom_point(aes(Age, dly_days, col = source))+
+  scale_x_continuous(breaks = seq(0, 100, 10))+
+  scale_y_continuous(limits = c(0, 25))+
+  scale_color_manual(values = c("red", "black"))+
+  theme_bw()
+
+  ggsave("Figures/spain_seroprev/lag_days_age_dist.png")
+
+
+delays %>%
+  mutate(Age = Age + 2.5) %>%
+  ggplot()+
+  geom_point(aes(Age, dly_weeks))+
+  scale_x_continuous(breaks = seq(0, 100, 10))+
+  scale_y_continuous(limits = c(0, 3.5))+
+  scale_color_manual(values = c("red", "black"))+
+  theme_bw()
+
+ggsave("Figures/spain_seroprev/lag_weeks_age_dist.png")
 
 # excess mortality by age since the beginning of the pandemic until the 
 # collection of seroprevalence data (Week 18 + delay)
