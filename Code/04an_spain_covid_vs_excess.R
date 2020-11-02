@@ -56,7 +56,7 @@ db_age_dist %>%
   scale_color_manual(values = c("red", "black"))+
   theme_bw()
 
-ggsave("Figures/spain_seroprev/age_distrib_excess_covid.png")
+ggsave("Figures/age_distrib_excess_covid.png")
 
 db_covid3 <- db_covid %>% 
   filter(Country == "Spain", 
@@ -87,4 +87,21 @@ db_deaths_age %>%
   scale_color_manual(values = c("red", "black"))+
   theme_bw()
 
-ggsave("Figures/spain_seroprev/age_deaths_excess_covid.png")
+ggsave("Figures/age_deaths_excess_covid.png")
+
+db_deaths_age2 <- db_deaths_age %>% 
+  spread(Source, Deaths) %>%
+  rename(COVerAGE = 'COVerAGE-DB') %>% 
+  mutate(Ratio = Excess / COVerAGE)
+
+
+db_deaths_age2 %>% 
+  filter(Age >= 5) %>% 
+  ggplot()+
+  geom_point(aes(Age, Ratio, col = Sex))+
+  scale_y_log10(breaks = c(2.5, 5, 10, 20), limit = c(2.5, 25))+
+  scale_x_continuous(breaks = seq(0, 90, 10))+
+  scale_color_manual(values = c("red", "black"))+
+  theme_bw()
+ggsave("Figures/age_ratio_excess_covid.png")
+

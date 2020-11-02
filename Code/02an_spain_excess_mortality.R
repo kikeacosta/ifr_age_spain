@@ -36,7 +36,7 @@ md1 <- smooth.spline(x = ages, y = days)
 # predicting delay time values by single-year of age  and converting them to integer weeks
 # deplacing age -2 to match 5 year age groups
 delays <- tibble(Age = seq(-2.5, 97.5, 0.5), dly_days = predict(md1, x = seq(0, 100, 0.5))$y) %>% 
-  mutate(dly_weeks = round(dly_days / 7))
+  mutate(dly_weeks = dly_days / 7)
 
 # Observing fit results
 delays %>%
@@ -50,7 +50,7 @@ delays %>%
   scale_color_manual(values = c("red", "black"))+
   theme_bw()
 
-  ggsave("Figures/spain_seroprev/lag_days_age_dist.png")
+# ggsave("Figures/spain_seroprev/lag_days_age_dist.png")
 
 
 delays %>%
@@ -62,26 +62,30 @@ delays %>%
   scale_color_manual(values = c("red", "black"))+
   theme_bw()
 
-ggsave("Figures/spain_seroprev/lag_weeks_age_dist.png")
+# ggsave("Figures/spain_seroprev/lag_weeks_age_dist.png")
 
 # excess mortality by age since the beginning of the pandemic until the 
 # collection of seroprevalence data (Week 18 + delay)
 db_excess_age <- db_excess %>% 
   left_join(delays) %>% 
-  mutate(last_week = cut_week + dly_weeks) %>%
-  filter(date >= date1,
-         Week <= last_week, 
-         Excess >= 0) %>% 
-  mutate(Excess_lp = ifelse(Deaths - up > 0, Deaths - up, 0),
+  mutate(last_week = cut_week + dly_weeks,
+         weight_week = case_when(Week < last_week ~ 1,
+                                 Week > last_week & Week == ceiling(last_week) ~ last_week - floor(last_week),
+                                 Week > ceiling(last_week) ~ 0),
+         Excess_lp = ifelse(Deaths > up, Deaths - up, 0),
          Excess_up = Deaths - lp,
-         Age = as.character(Age)) %>% 
+         Age = as.character(Age)) %>%
+  filter(date >= date1,
+         Week <= ceiling(last_week), 
+         Excess >= 0) %>% 
+  mutate() %>% 
   group_by(Sex, Age) %>% 
   summarise(Exposure = max(Exposure),
-            Deaths = sum(Deaths),
-            Baseline = sum(Baseline),
-            Excess = sum(Excess),
-            Excess_lp = sum(Excess_lp),
-            Excess_up = sum(Excess_up),
+            Deaths = sum(Deaths * weight_week),
+            Baseline = sum(Baseline * weight_week),
+            Excess = sum(Excess * weight_week),
+            Excess_lp = sum(Excess_lp * weight_week),
+            Excess_up = sum(Excess_up * weight_week),
             last_week = max(last_week)) %>% 
   ungroup() %>% 
   arrange(Sex, suppressWarnings(as.integer(Age)))
@@ -100,7 +104,6 @@ db_excess_all <- db_excess_age %>%
   ungroup()
 
 db_excess_4 <- bind_rows(db_excess_age, db_excess_all) %>% 
-  mutate(last_date = as.Date(paste(2020, last_week, 1, sep="-"), "%Y-%U-%u")) %>% 
   arrange(Sex, suppressWarnings(as.integer(Age)))
 
 # saving excess mortality 
