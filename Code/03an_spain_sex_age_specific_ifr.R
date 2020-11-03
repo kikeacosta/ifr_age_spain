@@ -300,12 +300,15 @@ db_ifr_age_oth %>%
   mutate(Age = as.integer(Age) + 2.5) %>% 
   ggplot()+
   geom_line(aes(Age, IFR, col = Source))+
-  geom_ribbon(aes(Age, ymin = IFR_l, ymax = IFR_u, fill = Source), alpha = 0.3)+
+  # geom_ribbon(aes(Age, ymin = IFR_l, ymax = IFR_u, fill = Source), alpha = 0.3)+
   scale_y_log10()+
   scale_x_continuous(breaks = seq(0, 100, 10))+
   scale_color_manual(values = c("red", "black", "blue", "green"))+
   scale_fill_manual(values = c("red", "black", "blue", "green"))+
   theme_bw()
+ggsave("Figures/ifr_age_several_spain.png")
+
+
 
 # either and both
 db_ifr_age_oth %>% 
@@ -320,6 +323,7 @@ db_ifr_age_oth %>%
   scale_fill_manual(values = c("red", "black", "blue", "green"))+
   theme_bw()
 
+ggsave("Figures/ifr_age_both_either_spain.png")
 
 # and verity?
 #############
@@ -333,7 +337,7 @@ db_ifr_age_oth2 <- verity %>%
                      Age_int = 5))
 
 db_ifr_age_oth2 %>% 
-  mutate(Age = as.integer(Age) + 2.5) %>% 
+  mutate(Age = Age + 0.5 * Age_int) %>% 
   ggplot()+
   geom_line(aes(Age, IFR, col = Source))+
   geom_ribbon(aes(Age, ymin = IFR_l, ymax = IFR_u, fill = Source), alpha = 0.3)+
@@ -353,12 +357,13 @@ db_ifr_age_oth3 <- db_ifr_age_oth2 %>%
             IFR_l = min(IFR_l),
             IFR_u = max(IFR_u)) %>% 
   ungroup() %>% 
-  mutate(Source = "Spain_max") %>% 
+  mutate(Source = "Spain_max",
+         Age_int = 5) %>% 
   bind_rows(verity %>% 
               select(-Sex))
 
 db_ifr_age_oth3 %>% 
-  mutate(Age = as.integer(Age) + 2.5) %>% 
+  mutate(Age = Age + 0.5 * Age_int) %>% 
   ggplot()+
   geom_line(aes(Age, IFR, col = Source))+
   geom_ribbon(aes(Age, ymin = IFR_l, ymax = IFR_u, fill = Source), alpha = 0.3)+
@@ -368,12 +373,58 @@ db_ifr_age_oth3 %>%
   scale_fill_manual(values = c("#e41a1c", "#377eb8", "#4daf4a", "#984ea3", "#ff7f00"))+
   theme_bw()
 
+ggsave("Figures/ifr_age_max_spain.png")
+
+
 db_odr <- read_csv("Data/IFR-ODriscoll.csv")
+db_ic <- read_csv("Data/IFR_imperial_college.csv")
 
 db_odr2 <- db_odr %>% 
   select(Age, b_IFR, b_IFR_l, b_IFR_u) %>% 
   rename(IFR = b_IFR, 
          IFR_l = b_IFR_l, 
          IFR_u = b_IFR_u) %>% 
-  mutate(Source = "ODriscol et al.")
+  mutate(Source = "ODriscol et al.",
+         IFR = IFR / 100,
+         IFR_l = IFR_l / 100,
+         IFR_u = IFR_u / 100,
+         Age_int = 5)
 
+db_ic2 <- db_ic %>% 
+  select(Age, s_IFR, s_IFR_l, s_IFR_u) %>% 
+  rename(IFR = s_IFR, 
+         IFR_l = s_IFR_l, 
+         IFR_u = s_IFR_u) %>% 
+  mutate(Source = "Imperial College",
+         IFR = IFR / 100,
+         IFR_l = IFR_l / 100,
+         IFR_u = IFR_u / 100,
+         Age_int = 5)
+
+
+db_ifr_age_oth4 <- db_ifr_age_oth3 %>% 
+  bind_rows(db_odr2, db_ic2)
+
+db_ifr_age_oth4 %>% 
+  mutate(Age = Age + 0.5 * Age_int) %>% 
+  ggplot()+
+  geom_line(aes(Age, IFR, col = Source))+
+  scale_y_log10()+
+  scale_x_continuous(breaks = seq(0, 100, 10))+
+  scale_color_manual(values = c("#e41a1c", "#377eb8", "#4daf4a", "#984ea3", "#ff7f00"))+
+  scale_fill_manual(values = c("#e41a1c", "#377eb8", "#4daf4a", "#984ea3", "#ff7f00"))+
+  theme_bw()
+
+ggsave("Figures/ifr_age_several_sources.png")
+
+# with confidence intervals
+db_ifr_age_oth4 %>% 
+  mutate(Age = Age + 0.5 * Age_int) %>% 
+  ggplot()+
+  geom_line(aes(Age, IFR, col = Source))+
+  geom_ribbon(aes(Age, ymin = IFR_l, ymax = IFR_u, fill = Source), alpha = 0.3)+
+  scale_y_log10()+
+  scale_x_continuous(breaks = seq(0, 100, 10))+
+  scale_color_manual(values = c("#e41a1c", "#377eb8", "#4daf4a", "#984ea3", "#ff7f00"))+
+  scale_fill_manual(values = c("#e41a1c", "#377eb8", "#4daf4a", "#984ea3", "#ff7f00"))+
+  theme_bw()
