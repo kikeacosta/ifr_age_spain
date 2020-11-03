@@ -12,6 +12,18 @@ db_covid <-  read_csv("Data/Output_5.zip",
                 skip = 3,
                 col_types = "ccccciiddd")
 
+
+# Comparison of total deaths in COVerAGE-DB and other sources
+db_covid %>% 
+  filter(Country == "Spain", 
+         Region == "All",
+         Date == "21.05.2020",
+         Sex == "b") %>% 
+  group_by() %>%
+  summarise(Deaths = sum(Deaths))
+# In May 25th COVerAGE-DB has recorded 28628 deaths and Worldometers 27768
+
+# filtering deaths in Spain by age and sex in May 25th
 db_covid2 <- db_covid %>% 
   filter(Country == "Spain", 
          Region == "All",
