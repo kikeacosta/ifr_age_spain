@@ -1,0 +1,409 @@
+Sex,Age,Estimate,IFR,Source,Age_int
+t,0,Central,4.8320198445020603e-4,Spain,5
+t,5,Central,5.708223026167269e-5,Spain,5
+t,10,Central,3.3664531477780055e-5,Spain,5
+t,15,Central,4.6268298054520075e-5,Spain,5
+t,20,Central,9.600050472007382e-5,Spain,5
+t,25,Central,1.426337167702182e-4,Spain,5
+t,30,Central,2.732227852668241e-4,Spain,5
+t,35,Central,2.934477195629958e-4,Spain,5
+t,40,Central,5.355198979593569e-4,Spain,5
+t,45,Central,8.199367390753874e-4,Spain,5
+t,50,Central,0.0017056215135614501,Spain,5
+t,55,Central,0.0030009491655100824,Spain,5
+t,60,Central,0.006427006874060286,Spain,5
+t,65,Central,0.014503706948059848,Spain,5
+t,70,Central,0.024063249866300724,Spain,5
+t,75,Central,0.05266798162919312,Spain,5
+t,80,Central,0.13404175682732597,Spain,5
+t,85,Central,0.20347648282818664,Spain,5
+t,90,Central,0.48890097972116797,Spain,5
+m,0,Central,0.0011197073416239758,Spain,5
+m,5,Central,5.321007812637198e-5,Spain,5
+m,10,Central,2.9093427586269618e-5,Spain,5
+m,15,Central,1.1423726540737956e-4,Spain,5
+m,20,Central,2.773754446072211e-4,Spain,5
+m,25,Central,1.633025455224054e-4,Spain,5
+m,30,Central,4.1215312954193285e-4,Spain,5
+m,35,Central,3.660112843836257e-4,Spain,5
+m,40,Central,6.206187132605149e-4,Spain,5
+m,45,Central,0.0011353606431972866,Spain,5
+m,50,Central,0.0020627070100083826,Spain,5
+m,55,Central,0.004084670863140564,Spain,5
+m,60,Central,0.008736507524492955,Spain,5
+m,65,Central,0.020885687441702803,Spain,5
+m,70,Central,0.03330254364003638,Spain,5
+m,75,Central,0.07327164759027667,Spain,5
+m,80,Central,0.19426886046215436,Spain,5
+m,85,Central,0.2506070063227756,Spain,5
+m,90,Central,0.5544911028387061,Spain,5
+f,0,Central,1.9895231997378148e-4,Spain,5
+f,5,Central,7.295422493386446e-5,Spain,5
+f,10,Central,3.785325496037088e-5,Spain,5
+f,15,Central,4.881767832393841e-5,Spain,5
+f,20,Central,1.2250972974738657e-4,Spain,5
+f,25,Central,1.2442041561669495e-4,Spain,5
+f,30,Central,1.6778687193515546e-4,Spain,5
+f,35,Central,2.2480952656391502e-4,Spain,5
+f,40,Central,3.254713995073102e-4,Spain,5
+f,45,Central,5.390660252150688e-4,Spain,5
+f,50,Central,8.56450691550607e-4,Spain,5
+f,55,Central,0.0018737661721845936,Spain,5
+f,60,Central,0.0031650849705422454,Spain,5
+f,65,Central,0.00720620095826876,Spain,5
+f,70,Central,0.015381482546711648,Spain,5
+f,75,Central,0.03358024693263787,Spain,5
+f,80,Central,0.09934485044939016,Spain,5
+f,85,Central,0.17210087970069332,Spain,5
+f,90,Central,0.4575759354549328,Spain,5
+t,0,Lower,6.485079264989608e-4,Spain,5
+t,5,Lower,7.159466168413186e-5,Spain,5
+t,10,Lower,4.0210412598459504e-5,Spain,5
+t,15,Lower,5.53916244314677e-5,Spain,5
+t,20,Lower,1.1407118796149946e-4,Spain,5
+t,25,Lower,1.735663300456872e-4,Spain,5
+t,30,Lower,3.3014419886407906e-4,Spain,5
+t,35,Lower,3.3996991900590986e-4,Spain,5
+t,40,Lower,6.093847114709924e-4,Spain,5
+t,45,Lower,9.257350279883406e-4,Spain,5
+t,50,Lower,0.0018951350150682776,Spain,5
+t,55,Lower,0.0033760678111988433,Spain,5
+t,60,Lower,0.007238839321310006,Spain,5
+t,65,Lower,0.01675983913998027,Spain,5
+t,70,Lower,0.028159122183968936,Spain,5
+t,75,Lower,0.06332697791129172,Spain,5
+t,80,Lower,0.17076552582111396,Spain,5
+t,85,Lower,0.27323984836927917,Spain,5
+t,90,Lower,0.7840864769113072,Spain,5
+m,0,Lower,0.0017249545533126111,Spain,5
+m,5,Lower,7.062428551318463e-5,Spain,5
+m,10,Lower,3.7969388544792554e-5,Spain,5
+m,15,Lower,1.5162400681343106e-4,Spain,5
+m,20,Lower,3.4886396125856676e-4,Spain,5
+m,25,Lower,2.1320054554314034e-4,Spain,5
+m,30,Lower,5.405286944812234e-4,Spain,5
+m,35,Lower,4.53853992635696e-4,Spain,5
+m,40,Lower,7.463136425284671e-4,Spain,5
+m,45,Lower,0.0013381036151968021,Spain,5
+m,50,Lower,0.002410110295904531,Spain,5
+m,55,Lower,0.0047726154295642375,Spain,5
+m,60,Lower,0.010255900137448254,Spain,5
+m,65,Lower,0.025257110394617345,Spain,5
+m,70,Lower,0.04078626131195467,Spain,5
+m,75,Lower,0.09333412252570955,Spain,5
+m,80,Lower,0.2765861742173045,Spain,5
+m,85,Lower,0.42750606960944065,Spain,5
+m,90,Lower,1.0693756983317901,Spain,5
+f,0,Lower,3.155795420273776e-4,Spain,5
+f,5,Lower,9.815659354738129e-5,Spain,5
+f,10,Lower,4.794745628313645e-5,Spain,5
+f,15,Lower,6.070916406951315e-5,Spain,5
+f,20,Lower,1.6334630632984878e-4,Spain,5
+f,25,Lower,1.638707913000373e-4,Spain,5
+f,30,Lower,2.1029287949206153e-4,Spain,5
+f,35,Lower,2.725815509587469e-4,Spain,5
+f,40,Lower,3.8532820861210285e-4,Spain,5
+f,45,Lower,6.241817134069218e-4,Spain,5
+f,50,Lower,9.864476715181099e-4,Spain,5
+f,55,Lower,0.002182628728039197,Spain,5
+f,60,Lower,0.003769651762668292,Spain,5
+f,65,Lower,0.008614309191493691,Spain,5
+f,70,Lower,0.018799589779314237,Spain,5
+f,75,Lower,0.04241715402017416,Spain,5
+f,80,Lower,0.13424979790458128,Spain,5
+f,85,Lower,0.24692734913577738,Spain,5
+f,90,Lower,0.7961821276915829,Spain,5
+t,0,Upper,3.520471600994358e-4,Spain,5
+t,5,Upper,4.6418516916085485e-5,Spain,5
+t,10,Upper,2.8664848585040444e-5,Spain,5
+t,15,Upper,3.89386666795466e-5,Spain,5
+t,20,Upper,8.080042480606214e-5,Spain,5
+t,25,Upper,1.1712199507147999e-4,Spain,5
+t,30,Upper,2.2424888979446884e-4,Spain,5
+t,35,Upper,2.534321214407691e-4,Spain,5
+t,40,Upper,4.7336133837478874e-4,Spain,5
+t,45,Upper,7.29604725448438e-4,Spain,5
+t,50,Upper,0.0015274222509505523,Spain,5
+t,55,Upper,0.0026565779497958113,Spain,5
+t,60,Upper,0.005730747796037088,Spain,5
+t,65,Upper,0.012675508593262387,Spain,5
+t,70,Upper,0.02084218492356756,Spain,5
+t,75,Upper,0.04396253012023557,Spain,5
+t,80,Upper,0.10564307953340099,Spain,5
+t,85,Upper,0.15179991576071067,Spain,5
+t,90,Upper,0.31245551335563365,Spain,5
+m,0,Upper,7.508625702654896e-4,Spain,5
+m,5,Upper,4.0044697971393354e-5,Spain,5
+m,10,Upper,2.262822145598748e-5,Spain,5
+m,15,Upper,8.778231973409167e-5,Spain,5
+m,20,Upper,2.2117519112471222e-4,Spain,5
+m,25,Upper,1.2686313453806703e-4,Spain,5
+m,30,Upper,3.140214320319489e-4,Spain,5
+m,35,Upper,3.012305260856389e-4,Spain,5
+m,40,Upper,5.217590952190169e-4,Spain,5
+m,45,Upper,9.606897750130888e-4,Spain,5
+m,50,Upper,0.0017612344470071572,Spain,5
+m,55,Upper,0.0035147167892139734,Spain,5
+m,60,Upper,0.0075483425011619145,Spain,5
+m,65,Upper,0.017517028176912027,Spain,5
+m,70,Upper,0.02729306208093207,Spain,5
+m,75,Upper,0.05807456512710817,Spain,5
+m,80,Upper,0.13947507930616213,Spain,5
+m,85,Upper,0.1524671996509194,Spain,5
+m,90,Upper,0.29744224721811385,Spain,5
+f,0,Upper,1.2889868618019647e-4,Spain,5
+f,5,Upper,5.4531440859656266e-5,Spain,5
+f,10,Upper,3.021898505239692e-5,Spain,5
+f,15,Upper,3.9460956645183546e-5,Spain,5
+f,20,Upper,9.33407464741993e-5,Spain,5
+f,25,Upper,9.462961187748633e-5,Spain,5
+f,30,Upper,1.3366072849071704e-4,Spain,5
+f,35,Upper,1.8480105149745553e-4,Spain,5
+f,40,Upper,2.7705416652275164e-4,Spain,5
+f,45,Upper,4.632598654191997e-4,Spain,5
+f,50,Upper,7.465009406082992e-4,Spain,5
+f,55,Upper,0.0016147903597688363,Spain,5
+f,60,Upper,0.002662690530773635,Spain,5
+f,65,Upper,0.006043910481128638,Spain,5
+f,70,Upper,0.012721526918332941,Spain,5
+f,75,Upper,0.026642179384572202,Spain,5
+f,80,Upper,0.07358877811065938,Spain,5
+f,85,Upper,0.12083678787495492,Spain,5
+f,90,Upper,0.2708102475141439,Spain,5
+t,0,Central,1.6e-5,Verity et al.,10
+t,10,Central,7e-5,Verity et al.,10
+t,20,Central,3.1e-4,Verity et al.,10
+t,30,Central,8.4e-4,Verity et al.,10
+t,40,Central,0.0016,Verity et al.,10
+t,50,Central,0.006,Verity et al.,10
+t,60,Central,0.019,Verity et al.,10
+t,70,Central,0.043,Verity et al.,10
+t,80,Central,0.078,Verity et al.,10
+t,0,Lower,1.85e-6,Verity et al.,10
+t,10,Lower,1.5e-5,Verity et al.,10
+t,20,Lower,1.4e-4,Verity et al.,10
+t,30,Lower,4.1e-4,Verity et al.,10
+t,40,Lower,7.6e-4,Verity et al.,10
+t,50,Lower,0.0034,Verity et al.,10
+t,60,Lower,0.011,Verity et al.,10
+t,70,Lower,0.025,Verity et al.,10
+t,80,Lower,0.038,Verity et al.,10
+t,0,Upper,2.49e-4,Verity et al.,10
+t,10,Upper,5e-4,Verity et al.,10
+t,20,Upper,9.2e-4,Verity et al.,10
+t,30,Upper,0.00185,Verity et al.,10
+t,40,Upper,0.0032,Verity et al.,10
+t,50,Upper,0.013,Verity et al.,10
+t,60,Upper,0.039,Verity et al.,10
+t,70,Upper,0.084,Verity et al.,10
+t,80,Upper,0.133,Verity et al.,10
+m,0,Central,3e-5,ODriscol et al.,5
+m,5,Central,1e-5,ODriscol et al.,5
+m,10,Central,1e-5,ODriscol et al.,5
+m,15,Central,3e-5,ODriscol et al.,5
+m,20,Central,8e-5,ODriscol et al.,5
+m,25,Central,1.7e-4,ODriscol et al.,5
+m,30,Central,3.3e-4,ODriscol et al.,5
+m,35,Central,5.600000000000001e-4,ODriscol et al.,5
+m,40,Central,0.00106,ODriscol et al.,5
+m,45,Central,0.00168,ODriscol et al.,5
+m,50,Central,0.00291,ODriscol et al.,5
+m,55,Central,0.0044800000000000005,ODriscol et al.,5
+m,60,Central,0.0059499999999999996,ODriscol et al.,5
+m,65,Central,0.01452,ODriscol et al.,5
+m,70,Central,0.02307,ODriscol et al.,5
+m,75,Central,0.0426,ODriscol et al.,5
+m,80,Central,0.10825,ODriscol et al.,5
+m,0,Lower,2e-5,ODriscol et al.,5
+m,5,Lower,0,ODriscol et al.,5
+m,10,Lower,1e-5,ODriscol et al.,5
+m,15,Lower,2e-5,ODriscol et al.,5
+m,20,Lower,7.000000000000001e-5,ODriscol et al.,5
+m,25,Lower,1.4000000000000001e-4,ODriscol et al.,5
+m,30,Lower,2.8000000000000003e-4,ODriscol et al.,5
+m,35,Lower,4.8e-4,ODriscol et al.,5
+m,40,Lower,9.1e-4,ODriscol et al.,5
+m,45,Lower,0.0014399999999999999,ODriscol et al.,5
+m,50,Lower,0.0025,ODriscol et al.,5
+m,55,Lower,0.00384,ODriscol et al.,5
+m,60,Lower,0.00511,ODriscol et al.,5
+m,65,Lower,0.01244,ODriscol et al.,5
+m,70,Lower,0.01976,ODriscol et al.,5
+m,75,Lower,0.03651,ODriscol et al.,5
+m,80,Lower,0.09276,ODriscol et al.,5
+m,0,Upper,4e-5,ODriscol et al.,5
+m,5,Upper,1e-5,ODriscol et al.,5
+m,10,Upper,2e-5,ODriscol et al.,5
+m,15,Upper,3e-5,ODriscol et al.,5
+m,20,Upper,8.999999999999999e-5,ODriscol et al.,5
+m,25,Upper,2e-4,ODriscol et al.,5
+m,30,Upper,3.7999999999999997e-4,ODriscol et al.,5
+m,35,Upper,6.5e-4,ODriscol et al.,5
+m,40,Upper,0.00123,ODriscol et al.,5
+m,45,Upper,0.0019500000000000001,ODriscol et al.,5
+m,50,Upper,0.00336,ODriscol et al.,5
+m,55,Upper,0.005180000000000001,ODriscol et al.,5
+m,60,Upper,0.00688,ODriscol et al.,5
+m,65,Upper,0.0168,ODriscol et al.,5
+m,70,Upper,0.026680000000000002,ODriscol et al.,5
+m,75,Upper,0.04929,ODriscol et al.,5
+m,80,Upper,0.12523,ODriscol et al.,5
+f,0,Central,3e-5,ODriscol et al.,5
+f,5,Central,1e-5,ODriscol et al.,5
+f,10,Central,1e-5,ODriscol et al.,5
+f,15,Central,2e-5,ODriscol et al.,5
+f,20,Central,5e-5,ODriscol et al.,5
+f,25,Central,8.999999999999999e-5,ODriscol et al.,5
+f,30,Central,1.5e-4,ODriscol et al.,5
+f,35,Central,2.5e-4,ODriscol et al.,5
+f,40,Central,4.3999999999999996e-4,ODriscol et al.,5
+f,45,Central,7.3e-4,ODriscol et al.,5
+f,50,Central,0.00123,ODriscol et al.,5
+f,55,Central,0.00197,ODriscol et al.,5
+f,60,Central,0.00318,ODriscol et al.,5
+f,65,Central,0.006979999999999999,ODriscol et al.,5
+f,70,Central,0.01042,ODriscol et al.,5
+f,75,Central,0.02145,ODriscol et al.,5
+f,80,Central,0.05759,ODriscol et al.,5
+f,0,Lower,2e-5,ODriscol et al.,5
+f,5,Lower,0,ODriscol et al.,5
+f,10,Lower,0,ODriscol et al.,5
+f,15,Lower,2e-5,ODriscol et al.,5
+f,20,Lower,4e-5,ODriscol et al.,5
+f,25,Lower,8e-5,ODriscol et al.,5
+f,30,Lower,1.3e-4,ODriscol et al.,5
+f,35,Lower,2.1e-4,ODriscol et al.,5
+f,40,Lower,3.7999999999999997e-4,ODriscol et al.,5
+f,45,Lower,6.3e-4,ODriscol et al.,5
+f,50,Lower,0.00105,ODriscol et al.,5
+f,55,Lower,0.00169,ODriscol et al.,5
+f,60,Lower,0.0027300000000000002,ODriscol et al.,5
+f,65,Lower,0.00598,ODriscol et al.,5
+f,70,Lower,0.00893,ODriscol et al.,5
+f,75,Lower,0.01838,ODriscol et al.,5
+f,80,Lower,0.04935,ODriscol et al.,5
+f,0,Upper,3e-5,ODriscol et al.,5
+f,5,Upper,1e-5,ODriscol et al.,5
+f,10,Upper,1e-5,ODriscol et al.,5
+f,15,Upper,3e-5,ODriscol et al.,5
+f,20,Upper,6e-5,ODriscol et al.,5
+f,25,Upper,1.0999999999999999e-4,ODriscol et al.,5
+f,30,Upper,1.7999999999999998e-4,ODriscol et al.,5
+f,35,Upper,2.9e-4,ODriscol et al.,5
+f,40,Upper,5.099999999999999e-4,ODriscol et al.,5
+f,45,Upper,8.500000000000001e-4,ODriscol et al.,5
+f,50,Upper,0.0014199999999999998,ODriscol et al.,5
+f,55,Upper,0.00228,ODriscol et al.,5
+f,60,Upper,0.00367,ODriscol et al.,5
+f,65,Upper,0.00807,ODriscol et al.,5
+f,70,Upper,0.01206,ODriscol et al.,5
+f,75,Upper,0.024820000000000002,ODriscol et al.,5
+f,80,Upper,0.06662,ODriscol et al.,5
+t,0,Central,3e-5,ODriscol et al.,5
+t,5,Central,1e-5,ODriscol et al.,5
+t,10,Central,1e-5,ODriscol et al.,5
+t,15,Central,3e-5,ODriscol et al.,5
+t,20,Central,6e-5,ODriscol et al.,5
+t,25,Central,1.3e-4,ODriscol et al.,5
+t,30,Central,2.4e-4,ODriscol et al.,5
+t,35,Central,4e-4,ODriscol et al.,5
+t,40,Central,7.5e-4,ODriscol et al.,5
+t,45,Central,0.00121,ODriscol et al.,5
+t,50,Central,0.00207,ODriscol et al.,5
+t,55,Central,0.0032300000000000002,ODriscol et al.,5
+t,60,Central,0.00456,ODriscol et al.,5
+t,65,Central,0.01075,ODriscol et al.,5
+t,70,Central,0.016739999999999998,ODriscol et al.,5
+t,75,Central,0.032029999999999996,ODriscol et al.,5
+t,80,Central,0.08292,ODriscol et al.,5
+t,0,Lower,2e-5,ODriscol et al.,5
+t,5,Lower,0,ODriscol et al.,5
+t,10,Lower,1e-5,ODriscol et al.,5
+t,15,Lower,2e-5,ODriscol et al.,5
+t,20,Lower,5e-5,ODriscol et al.,5
+t,25,Lower,1.0999999999999999e-4,ODriscol et al.,5
+t,30,Lower,2.1e-4,ODriscol et al.,5
+t,35,Lower,3.4e-4,ODriscol et al.,5
+t,40,Lower,6.4e-4,ODriscol et al.,5
+t,45,Lower,0.00104,ODriscol et al.,5
+t,50,Lower,0.0017699999999999999,ODriscol et al.,5
+t,55,Lower,0.0027700000000000003,ODriscol et al.,5
+t,60,Lower,0.00392,ODriscol et al.,5
+t,65,Lower,0.009210000000000001,ODriscol et al.,5
+t,70,Lower,0.01435,ODriscol et al.,5
+t,75,Lower,0.027440000000000003,ODriscol et al.,5
+t,80,Lower,0.07105,ODriscol et al.,5
+t,0,Upper,3e-5,ODriscol et al.,5
+t,5,Upper,1e-5,ODriscol et al.,5
+t,10,Upper,1e-5,ODriscol et al.,5
+t,15,Upper,3e-5,ODriscol et al.,5
+t,20,Upper,8e-5,ODriscol et al.,5
+t,25,Upper,1.5e-4,ODriscol et al.,5
+t,30,Upper,2.8000000000000003e-4,ODriscol et al.,5
+t,35,Upper,4.7e-4,ODriscol et al.,5
+t,40,Upper,8.699999999999999e-4,ODriscol et al.,5
+t,45,Upper,0.0014000000000000002,ODriscol et al.,5
+t,50,Upper,0.0023899999999999998,ODriscol et al.,5
+t,55,Upper,0.00373,ODriscol et al.,5
+t,60,Upper,0.00527,ODriscol et al.,5
+t,65,Upper,0.01244,ODriscol et al.,5
+t,70,Upper,0.019370000000000002,ODriscol et al.,5
+t,75,Upper,0.03705,ODriscol et al.,5
+t,80,Upper,0.09593,ODriscol et al.,5
+t,0,Central,0,Imperial College,5
+t,5,Central,1e-4,Imperial College,5
+t,10,Central,1e-4,Imperial College,5
+t,15,Central,2e-4,Imperial College,5
+t,20,Central,2e-4,Imperial College,5
+t,25,Central,4e-4,Imperial College,5
+t,30,Central,6e-4,Imperial College,5
+t,35,Central,9e-4,Imperial College,5
+t,40,Central,0.0015,Imperial College,5
+t,45,Central,0.0023,Imperial College,5
+t,50,Central,0.0036,Imperial College,5
+t,55,Central,0.005699999999999999,Imperial College,5
+t,60,Central,0.0089,Imperial College,5
+t,65,Central,0.0139,Imperial College,5
+t,70,Central,0.0217,Imperial College,5
+t,75,Central,0.0339,Imperial College,5
+t,80,Central,0.053,Imperial College,5
+t,85,Central,0.0828,Imperial College,5
+t,90,Central,0.16190000000000002,Imperial College,5
+t,0,Lower,0,Imperial College,5
+t,5,Lower,0,Imperial College,5
+t,10,Lower,0,Imperial College,5
+t,15,Lower,0,Imperial College,5
+t,20,Lower,0,Imperial College,5
+t,25,Lower,0,Imperial College,5
+t,30,Lower,1e-4,Imperial College,5
+t,35,Lower,1e-4,Imperial College,5
+t,40,Lower,2e-4,Imperial College,5
+t,45,Lower,3e-4,Imperial College,5
+t,50,Lower,5e-4,Imperial College,5
+t,55,Lower,0.001,Imperial College,5
+t,60,Lower,0.0018,Imperial College,5
+t,65,Lower,0.0034000000000000002,Imperial College,5
+t,70,Lower,0.0064,Imperial College,5
+t,75,Lower,0.011899999999999999,Imperial College,5
+t,80,Lower,0.0219,Imperial College,5
+t,85,Lower,0.0398,Imperial College,5
+t,90,Lower,0.0944,Imperial College,5
+t,0,Upper,3e-4,Imperial College,5
+t,5,Upper,6e-4,Imperial College,5
+t,10,Upper,0.001,Imperial College,5
+t,15,Upper,0.0017000000000000001,Imperial College,5
+t,20,Upper,0.0028000000000000004,Imperial College,5
+t,25,Upper,0.0044,Imperial College,5
+t,30,Upper,0.0067,Imperial College,5
+t,35,Upper,0.0098,Imperial College,5
+t,40,Upper,0.0137,Imperial College,5
+t,45,Upper,0.018799999999999997,Imperial College,5
+t,50,Upper,0.0252,Imperial College,5
+t,55,Upper,0.0332,Imperial College,5
+t,60,Upper,0.0434,Imperial College,5
+t,65,Upper,0.0564,Imperial College,5
+t,70,Upper,0.0735,Imperial College,5
+t,75,Upper,0.0965,Imperial College,5
+t,80,Upper,0.1281,Imperial College,5
+t,85,Upper,0.1725,Imperial College,5
+t,90,Upper,0.2778,Imperial College,5

@@ -218,3 +218,5 @@ db_ifrs2 %>%
   scale_color_manual(values = c("#e41a1c", "#377eb8", "#4daf4a", "#984ea3", "#ff7f00"))+
   scale_fill_manual(values = c("#e41a1c", "#377eb8", "#4daf4a", "#984ea3", "#ff7f00"))+
   theme_bw()
+
+write_csv(db_ifrs2, "Output/sex_age_ifr_several_sources.csv")
