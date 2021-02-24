@@ -21,9 +21,10 @@ interpop <- function(db){
   return(inter_pop)
 }
 
-
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # Adjustments to STMF inputs
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 # data prep function preamble
 dist_unk <- function(chunk){
   if ("UNK" %in% chunk$Age){
@@ -71,11 +72,24 @@ scale_sexes <- function(chunk){
 }
 
 
+# db <- temp2
+# ax <- aint / 2
 
+# ungrouping IFRs
+ungr_ifrs <- function(db, ax){
+  ages <- db %>% pull(Age) + ax
+  log_ifrs <- log(db %>% pull(IFR) + 1e-20)
+  # smoothing in single-years of age
+  new_x <- seq(0, 100)
+  md2 <- smooth.spline(x = ages, y = log_ifrs)
+  ifrs_ungr <- tibble(Age = new_x,
+                      IFR = exp(predict(md2, new_x)$y) - 1e-20)
+  return(ifrs_ungr)
+}
 
-##############################
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ### function for bootstrapping 
-##############################
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 boot_pi <- function(model, odata, pdata, n, p) {
   lp <- (1 - p) / 2
@@ -94,9 +108,9 @@ boot_pi <- function(model, odata, pdata, n, p) {
                     up = boot_ci[, 2]))
 }
 
-#############################################################
-### function for fitting model for each country, sex, and age
-#############################################################
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+### function for fitting model for each sex, and age
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # ct <- "Spain"
 # sx <- "b"
@@ -112,9 +126,9 @@ fit_baseline <- function(db2, a) {
   db_bline <- db2 %>% 
     filter(include == 1)
   
-  ##########################
+  # ~~~~~~~~~~~~~~~~~~~~~~~~
   # model fitting evaluation
-  ##########################
+  # ~~~~~~~~~~~~~~~~~~~~~~~~
   # evaluate the seasonal parameter with AIC
   train_base <- db_bline %>% 
     filter(row_number() <= floor(nrow(db_bline)/2))
@@ -190,9 +204,9 @@ fit_baseline <- function(db2, a) {
     }
   }
   
-  ################################################
+  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   # predicting values and 95% confidence intervals
-  ################################################
+  # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   
   # bootstrapping
   tryCatch({

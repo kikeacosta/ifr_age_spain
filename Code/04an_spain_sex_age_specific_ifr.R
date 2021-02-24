@@ -1,16 +1,6 @@
 # Description:
 source("Code/00_functions.R")
 
-# reading seroprevalence data
-# db_ser <- read_csv("Data/spain_seroprev_round1.csv")
-# db_ser_f <- read_csv("Data/spain_seroprev_round_final.csv")
-# Seroprevalence data in tidy format by sex
-# db_ser2 <- db_ser %>% 
-#   gather(-Age, key = "Measure", value = "Val") %>% 
-#   separate(Measure, c("Measure", "Sex"), sep = "_") %>% 
-#   spread(Measure, Val)
-
-
 # Global seroprevalence data from 4 rounds of the national representative study. 
 # Values obtained from Table 9 in
 # https://www.mscbs.gob.es/gabinetePrensa/notaPrensa/pdf/15.12151220163348113.pdf
@@ -41,7 +31,7 @@ db_ser2 <-
   replace_na(list(Age = 90))
 
 # reading excess mortality data until the date of seroprevalence study
-db_deaths <- read_csv("Output/spain_deaths_confirmed_and_excess.rds")
+db_deaths <- read_rds("Output/spain_deaths_confirmed_and_excess.rds")
 
 db_deaths2 <- db_deaths %>% 
   select(Sex, Age, Deaths)
@@ -78,7 +68,11 @@ write_csv(db_ifr_age,  path = "Output/spain_sex_age_ifr.csv")
 
 
 # Overall IFR in Spain
-db_ifr_age %>%
+db_ser2 %>% 
+  left_join(db_pop2) %>% 
+  mutate(Infections = IR * Pop) %>% 
+  left_join(db_deaths2) %>% 
+  mutate(IFR = Deaths / Infections) %>%
   group_by(Sex) %>% 
   summarise(Infections = sum(Infections),
             Deaths = sum(Deaths)) %>% 

@@ -22,8 +22,14 @@ registerDoParallel(cores = 6)
 # reading data of weekly mortality in 5-years age groups and exposures from the HMD
 ###################################################################################
 
-# reading Spaniard weekly mortality data from STMF (version 2021-02-20)
+# Downloading Spaniard weekly mortality data from STMF (version 2021-02-20) 
+# from OSF
+osf_retrieve_file("ejztk") %>%
+  osf_download(conflicts = "overwrite",
+               path = "Data")
+# loading weekly deaths
 db_d <- read_csv("Data/ESPstmf.csv")
+
 # reading offsets from HMD (version 2021-02-20)
 db_p <- read_table("Data/HMD_population_spain_x1.txt",
                    skip = 1)

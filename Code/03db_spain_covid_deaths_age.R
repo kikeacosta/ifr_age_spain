@@ -3,21 +3,31 @@
 source("Code/00_functions.R")
 
 
-# Loading Confirmed deaths data directly from OSF
-osf_retrieve_file("7tnfh") %>%
-  osf_download(conflicts = "overwrite",
-               path = "Data") 
+# # Loading Confirmed deaths data in 5-year age groups directly from 
+# # COVerAGE-DB in OSF
+# # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# osf_retrieve_file("7tnfh") %>%
+#   osf_download(conflicts = "overwrite",
+#                path = "Data") 
+# 
+# # This reads it in
+# db_conf <-  read_csv("Data/Output_5.zip",
+#                  skip = 3,
+#                  col_types = cols(.default = "c")) %>% 
+#   mutate(Date = dmy(Date),
+#          Deaths = as.double(Deaths),
+#          Age = as.integer(Age)) %>% 
+#   filter(!str_detect(Code, "ECDC"),
+#          Country == "Spain",
+#          Region == "All") %>% 
+#   select(-Tests)
+# 
+# write_rds(db_conf, "Output/spain_confirmed_c19_deaths_coverage-db.rds")
 
-# This reads it in
-db_conf <-  read_csv("Data/Output_5.zip",
-                 skip = 3,
-                 col_types = cols(.default = "c")) %>% 
-  mutate(Date = dmy(Date),
-         Deaths = as.double(Deaths),
-         Age = as.integer(Age)) %>% 
-  filter(!str_detect(Code, "ECDC"),
-         Country == "Spain",
-         Region == "All") 
+# loading stored deaths in Spain from a filtered sample of COVerAGE-DB
+# (Version 24-Feb-2021)
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+db_conf <- read_rds("Output/spain_confirmed_c19_deaths_coverage-db.rds")
 
 db_conf2 <- db_conf %>% 
   mutate(Age = ifelse(Age >= 90, 90, Age),
