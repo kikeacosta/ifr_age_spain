@@ -36,6 +36,8 @@ delays <-
   # to weeks
   mutate(dly_weeks = dly_days / 7)
 
+write_rds(delays, "Output/delays_onset_death_by_age.rds")
+
 # Observing ECDC and fitted results
 delays %>%
   mutate(Age = Age + 2.5,
@@ -60,12 +62,16 @@ db_excess_age <- db_excess %>%
                                  Week > last_week & Week == ceiling(last_week) ~ last_week - floor(last_week),
                                  Week > ceiling(last_week) ~ 0),
          epi_week = ifelse(Deaths > up, 1, 0),
-         Excess = ifelse(epi_week == 1, Deaths - Baseline, 0)) %>%
+         Excess_epi = ifelse(epi_week == 1, Deaths - Baseline, 0),
+         Excess_pos = ifelse(Deaths >= Baseline, Deaths - Baseline, 0),
+         Excess_all = Deaths - Baseline) %>%
   filter(Date >= ymd(date1),
          Week <= ceiling(last_week)) %>% 
   group_by(Sex, Age) %>% 
   summarise(Exposure = sum(Exposure),
-            Excess = sum(Excess * weight_week),
+            Excess_epi = sum(Excess_epi * weight_week),
+            Excess_pos = sum(Excess_pos * weight_week),
+            Excess_all = sum(Excess_all * weight_week),
             last_week = max(last_week)) %>% 
   ungroup() %>% 
   arrange(Sex, Age)
@@ -74,12 +80,16 @@ db_excess_age <- db_excess %>%
 db_excess_all <- db_excess_age %>% 
   group_by(Sex) %>% 
   summarise(Exposure = sum(Exposure),
-            Excess = sum(Excess),
+            Excess_epi = sum(Excess_epi),
+            Excess_pos = sum(Excess_pos),
+            Excess_all = sum(Excess_all),
             last_week = max(last_week)) %>% 
   mutate(Age = "All") %>% 
   ungroup()
 
-db_excess_4 <- bind_rows(db_excess_age, db_excess_all) %>% 
+db_excess_4 <- bind_rows(db_excess_age %>% 
+                           mutate(Age = as.character(Age)), 
+                         db_excess_all) %>% 
   arrange(Sex, Age)
 
 # saving excess mortality 

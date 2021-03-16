@@ -2,7 +2,8 @@
 # Summarize EXCESS deaths since 24th February, 2020, in all countries by sex and age 
 source("Code/00_functions.R")
 
-
+delays <- read_rds("Output/delays_onset_death_by_age.rds")
+cut_date <- "2020-11-29"  
 # # Loading Confirmed deaths data in 5-year age groups directly from 
 # # COVerAGE-DB in OSF
 # # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -48,10 +49,49 @@ db_conf2 <- db_conf %>%
 db_excess <- read_rds("Output/spain_excess_until_seroprev.rds")
 
 # Merging confirmed and excess deaths
-# assigning max deaths to each age and sex combination
+# assigning confirmed deaths in ages < 65 and excess_epi to ages >= 65
 db_deaths <- db_excess %>% 
   select(-last_week) %>% 
-  left_join(db_conf2) %>% 
-  mutate(Deaths = ifelse(Excess > Confirmed, Excess, Confirmed))
+  left_join(db_conf2)
 
-write_rds(db_deaths, "Output/spain_deaths_confirmed_and_excess.rds")
+db_deaths_combined <-  
+  db_deaths %>%
+  mutate(Deaths = ifelse(Age <= 60, Confirmed, Excess_epi)) %>% 
+  select(-Excess_pos, -Excess_all) %>% 
+  rename(Excess = Excess_epi)
+
+write_rds(db_deaths_combined, "Output/spain_deaths_confirmed_and_excess.rds")
+
+db_deaths_source <- db_deaths %>% 
+  select(-Excess_all) %>% 
+  gather(Excess_epi, Excess_pos, Confirmed, key = Source, value = Value) %>% 
+  mutate(Source = factor(Source, levels = c("Confirmed", "Excess_epi", "Excess_pos")),
+         Mx = Value / Exposure)
+  
+db_deaths_source %>% 
+  ggplot()+
+  geom_line(aes(Age, Mx, col = Source, size = Source, alpha = Source))+
+  scale_y_log10()+
+  scale_x_continuous(breaks = seq(0, 90, 10))+
+  scale_size_manual(values = c(1, 1, 1))+
+  scale_alpha_manual(values = c(1, 1, 1))+
+  facet_grid(~ Sex)+
+  theme_bw()
+
+ggsave("Figures/covid_deaths_by_source_age_sex_v1.png")
+
+db_deaths_combined %>% 
+  gather(Excess, Confirmed, Deaths, key = Source, value = Value) %>% 
+  mutate(Source = factor(Source, levels = c("Confirmed", "Excess", "Deaths")),
+         Mx = Value / Exposure) %>% 
+  ggplot()+
+  geom_line(aes(Age, Mx, col = Source, size = Source, alpha = Source))+
+  scale_y_log10()+
+  scale_x_continuous(breaks = seq(0, 90, 10))+
+  scale_size_manual(values = c(1, 1, 3))+
+  scale_alpha_manual(values = c(1, 1, 0.5))+
+  facet_grid(~ Sex)+
+  theme_bw()
+
+ggsave("Figures/covid_deaths_by_source_age_sex_v2.png")
+

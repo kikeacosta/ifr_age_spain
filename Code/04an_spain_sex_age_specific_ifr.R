@@ -67,18 +67,46 @@ ggsave("Figures/ifr_age_sex.png")
 write_csv(db_ifr_age,  path = "Output/spain_sex_age_ifr.csv")
 
 
+db_ifr_age %>%
+  spread(Estimate, IFR) %>% 
+  mutate(Age = as.integer(Age) + 2.5) %>% 
+  ggplot()+
+  geom_line(aes(Age, Central, col = Sex))+
+  geom_ribbon(aes(Age, ymin = Lower, ymax = Upper, fill = Sex), alpha = 0.3)+
+  scale_y_log10()+
+  scale_color_manual(values = c("red", "black", "blue"))+
+  scale_fill_manual(values = c("red", "black", "blue"))+
+  theme_bw()
+
+ggsave("Figures/ifr_age_sex_pred_ints.png")
+
+
 # Overall IFR in Spain
-db_ser2 %>% 
+# ~~~~~~~~~~~~~~~~~~~~
+overall_ifr_spain <- db_ser2 %>% 
   left_join(db_pop2) %>% 
   mutate(Infections = IR * Pop) %>% 
   left_join(db_deaths2) %>% 
   mutate(IFR = Deaths / Infections) %>%
-  group_by(Sex) %>% 
+  group_by(Sex, Estimate) %>% 
   summarise(Infections = sum(Infections),
             Deaths = sum(Deaths)) %>% 
   ungroup() %>% 
-  mutate(Overall_IFR = Deaths / Infections)
+  mutate(Overall_IFR = Deaths / Infections) %>% 
+  select(Sex, Estimate, Overall_IFR) %>% 
+  spread(Estimate, Overall_IFR)
   
+overall_ifr_spain
+
+overall_ifr_spain %>% 
+  ggplot()+
+  geom_point(aes(Sex, Central), size = 3)+
+  geom_errorbar(aes(Sex, ymin=Upper, ymax=Lower), width=.5)+
+  scale_y_continuous(limits = c(0, 0.03))+
+  # coord_flip()+
+  theme_bw()
+    
+ggsave("Figures/Overall_ifr_spain_by_sex.png", width = 5, height = 3)
 
 # plotting sex- and age-specific IFR in Spain with confidence intervals
 db_ifr_age %>% 
@@ -190,11 +218,12 @@ db_ifrs2 %>%
          Sex == "t") %>% 
   mutate(Age = Age + 0.5 * Age_int) %>% 
   ggplot()+
-  geom_line(aes(Age, IFR, col = Source))+
+  geom_line(aes(Age, IFR, col = Source, size = Source))+
   scale_y_log10()+
   scale_x_continuous(breaks = seq(0, 100, 10))+
   scale_color_manual(values = c("#e41a1c", "#377eb8", "#4daf4a", "#984ea3", "#ff7f00"))+
   scale_fill_manual(values = c("#e41a1c", "#377eb8", "#4daf4a", "#984ea3", "#ff7f00"))+
+  scale_size_manual(values = c(0.8, 0.8, 1.5, 0.8))+
   theme_bw()
 
 ggsave("Figures/ifr_age_several_sources.png")
@@ -214,3 +243,31 @@ db_ifrs2 %>%
   theme_bw()
 
 write_csv(db_ifrs2, "Output/sex_age_ifr_several_sources.csv")
+
+# Comparing with previous estimates
+unique(db_ifr_age$Estimate)
+unique(db_ifr_age$Sex)
+
+prev_ifrs <- read_csv("Output/deprecated/spain_sex_age_ifr.csv")
+
+prev_ifrs2 <- 
+  prev_ifrs %>% 
+  rename(Central = IFR,
+         Lower = IFR_l,
+         Upper = IFR_u) %>% 
+  mutate(Sex = recode(Sex,
+                      "b" = "t"),
+         Source = "Previous Spain") %>% 
+  bind_rows(db_ifr_age %>%
+              spread(Estimate, IFR) %>% 
+              mutate(Source = "Current Spain"))
+  
+prev_ifrs2 %>%
+  ggplot()+
+  geom_line(aes(Age, Central, col = Source))+
+  geom_ribbon(aes(Age, ymin = Lower, ymax = Upper, fill = Source), alpha = 0.3)+
+  scale_y_log10()+
+  facet_grid(~ Sex)+
+  theme_bw()
+
+ggsave("Figures/ifr_age_spain_previous_vs_current.png")
